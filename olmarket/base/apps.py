@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class OlmappConfig(AppConfig):
+class BaseConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'olmapp'
+    name = 'base'

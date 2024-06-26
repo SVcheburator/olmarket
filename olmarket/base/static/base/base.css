@@ -1,0 +1,13 @@
+body {
+    background-color: #575555;
+}
+
+.navbar {
+    background-color: #088a98;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+}

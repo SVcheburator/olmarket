@@ -13,15 +13,27 @@
 <main class="container">
 
     <nav class="navbar row">
-        <div class="col-lg-6 col-md-5 col-2 d-flex justify-content-start">
+        {% if user.is_authenticated %}
+        <div class="col-lg-6 col-md-4 col-2 d-flex justify-content-start">
             <a class="nav-item main-btn" href="{% url 'main:main'%}">OLMarket</a>
         </div>
-        <div class="col-lg-3 col-md-3 col-5 d-flex justify-content-end">
-            <a class="nav-item my-profile-btn" href="">My profile</a>
+        <div class="col-lg-3 col-md-4 col-5 d-flex justify-content-end">
+            <a class="nav-item my-profile-btn" href="">My profile - {{user}}</a>
         </div>
         <div class="col-lg-3 col-md-4 col-5 d-flex justify-content-center">
             <a class="btn btn-secondary add-adv-btn" href="" role="button">Add an advertisement</a>
         </div>
+        {% else %}
+        <div class="col-xl-10 col-lg-9 col-md-8 col-6 d-flex justify-content-start">
+            <a class="nav-item main-btn" href="{% url 'main:main'%}">OLMarket</a>
+        </div>
+        <div class="col-xl-1 col-lg-2 col-md-2 col-3 d-flex justify-content-end">
+            <a class="btn btn-secondary login-btn" href="{% url 'users:login'%}">Login</a>
+        </div>
+        <div class="col-xl-1 col-lg-1 col-md-2 col-3 d-flex justify-content-end">
+            <a class="btn btn-secondary signup-btn" href="{% url 'users:signup'%}">Signup</a>
+        </div>
+        {% endif %}
     </nav>
     
     

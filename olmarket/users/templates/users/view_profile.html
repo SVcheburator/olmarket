@@ -1,0 +1,15 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+
+<h1 style="font-weight: bold; color: black;">{{profile.user.username}}</h1>
+
+
+<p>Avatar:</p>
+{% if profile.avatar %}
+    <a href="{{ profile.avatar.url }}" target="_blank">
+        <img src="{{ profile.avatar.url }}" width="250" height="250" alt="avatar of user"/>
+    </a>
+{% endif %}
+
+{% endblock %}

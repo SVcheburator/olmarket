@@ -1,0 +1,39 @@
+{% extends "base/base.html" %} {% load static %}
+
+
+{% block content %}
+
+<div>
+    <h1><a class="user-profile-preview-link" href="">{{user.username}}</a> - your profile settings</h1>
+    {% if profile_form.avatar.value %}
+      <a href="{{ profile_form.avatar.value.url }}" target="_blank">
+        <img src="{{ user.profile.avatar.url }}" width="250" height="250" alt="Current Avatar">
+      </a>
+    {% endif %}
+</div>
+
+{% if messages %}
+<div>
+    {% for message in messages %}
+    <div {% if message.tags %} class="alert-{{ message.tags }}" {% endif %}>{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<form method="POST" enctype="multipart/form-data" class="mb-3 custom-form">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label class="small mb-1">Change Avatar:</label>
+        <input type="file" name="{{ profile_form.avatar.name }}" id="{{ profile_form.avatar.attrs.id }}" accept="image/*">
+        <div class="text-danger">{{ profile_form.errors.avatar }}</div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <button type="reset" class="btn btn-secondary">Reset</button>
+
+</form>
+
+<a class="btn btn-danger logout-btn" href="{% url 'users:logout'%}">Logout</a>
+
+{% endblock %}

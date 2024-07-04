@@ -3,7 +3,8 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, ProfileForm
+from .models import Profile
 
 
 def signupuser(request):
@@ -41,3 +42,24 @@ def loginuser(request):
 def logoutuser(request):
     logout(request)
     return redirect(to='main:main')
+
+
+# Profiles
+@login_required
+def my_profile(request):
+    if request.method == 'POST':
+        profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if profile_form.is_valid():
+            profile_form.save()
+            messages.success(request, 'Your profile is updated successfully')
+            return redirect(to='users:my_profile')
+    else:
+        profile_form = ProfileForm(instance=request.user.profile)
+
+    return render(request, 'users/my_profile.html', {'profile_form': profile_form})
+
+
+def view_profile(request, user_id):
+    profile = Profile.objects.get(user_id=user_id)
+        
+    return render(request, 'users/view_profile.html', {'profile': profile})

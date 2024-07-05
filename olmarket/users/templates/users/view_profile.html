@@ -1,15 +1,23 @@
-{% extends "base/base.html" %}
+{% extends "base/base.html" %}{% load static %}
+
+{% block additional_styles %}
+<link rel="stylesheet" href="{% static 'users/view_profile_style.css' %}">
+{% endblock %}
 
 {% block content %}
+<div class="profile-header">
+    {% if profile.avatar %}
+        <a href="{{ profile.avatar.url }}" target="_blank">
+            <img class="avatar" src="{{ profile.avatar.url }}" alt="avatar of user"/>
+        </a>
+    {% endif %}
+    <h1 class="username">{{ profile.user.username }}</h1>
+</div>
 
-<h1 style="font-weight: bold; color: black;">{{profile.user.username}}</h1>
-
-
-<p>Avatar:</p>
-{% if profile.avatar %}
-    <a href="{{ profile.avatar.url }}" target="_blank">
-        <img src="{{ profile.avatar.url }}" width="250" height="250" alt="avatar of user"/>
-    </a>
+{% if profile.user_id == user.id %}
+<div>
+    <a class="btn btn-secondary" href="{% url 'users:my_profile' %}">My profile settings</a>
+</div>
 {% endif %}
 
 {% endblock %}

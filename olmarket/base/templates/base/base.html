@@ -18,7 +18,7 @@
             <a class="nav-item main-btn" href="{% url 'main:main'%}">OLMarket</a>
         </div>
         <div class="col-lg-3 col-md-4 col-5 d-flex justify-content-end">
-            <a class="nav-item my-profile-btn" href="{% url 'users:my_profile'%}">My profile - {{user}}</a>
+            <a class="nav-item my-profile-btn" href="{% url 'users:view_profile' user.id %}">My profile - {{user}}</a>
         </div>
         <div class="col-lg-3 col-md-4 col-5 d-flex justify-content-center">
             <a class="btn btn-secondary add-adv-btn" href="" role="button">Add an advertisement</a>

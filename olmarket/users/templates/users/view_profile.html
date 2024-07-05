@@ -8,7 +8,7 @@
 <div class="profile-header">
     {% if profile.avatar %}
         <a href="{{ profile.avatar.url }}" target="_blank">
-            <img class="avatar" src="{{ profile.avatar.url }}" alt="avatar of user"/>
+            <img class="profile-avatar" src="{{ profile.avatar.url }}" alt="avatar of user"/>
         </a>
     {% endif %}
     <h1 class="username">{{ profile.user.username }}</h1>

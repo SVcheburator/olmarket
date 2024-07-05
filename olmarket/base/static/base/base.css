@@ -11,3 +11,12 @@ body {
     color: white;
     display: inline-block;
 }
+
+
+.base-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}

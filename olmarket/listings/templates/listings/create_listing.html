@@ -1,0 +1,53 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h2>Create Listing</h2>
+
+{% if messages %}
+<div>
+    {% for message in messages %}
+    <div {% if message.tags %} class="alert-{{ message.tags }}" {% endif %}>{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<form method="post" enctype="multipart/form-data" action="{% url 'listings:create_listing' %}">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="{{ listing_form.title.value }}">
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control" id="description" name="description" placeholder="Description">{{ listing_form.description.value }}</textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="number" class="form-control" id="price" name="price" placeholder="Price" value="{{ listing_form.price.value }}">
+    </div>
+
+    <div class="form-group">
+        <label for="category">Category:</label>
+        <select class="form-control" id="category" name="category">
+            {% for category in listing_form.category.field.queryset %}
+                <option value="{{ category.id }}" {% if category.id == listing_form.instance.category.id %} selected {% endif %}>{{ category.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="image">Images:</label>
+        <input type="file" class="form-control-file" id="image" name="image" multiple>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create Listing</button>
+        <button type="reset" class="btn btn-secondary">Reset</button>
+    </div>
+</form>
+
+{% endblock %}

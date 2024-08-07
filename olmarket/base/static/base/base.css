@@ -17,9 +17,16 @@ body {
     border: 1px solid;
     border-radius: 10px;
 }
+.nav-item:hover {
+    color: #818187;
+    transition: 0.2s;
+}
 
 .active-nav-item {
     background-color: #c9c1c1;
+    color: #4d4d4f;;
+}
+.active-nav-item:hover {
     color: #4d4d4f;;
 }
 
@@ -27,6 +34,9 @@ body {
     color: #c9c1c1;
     background-color: transparent;
     border: none;
+}
+.main-btn:hover {
+    color: #c9c1c1;
 }
 
 .base-avatar {

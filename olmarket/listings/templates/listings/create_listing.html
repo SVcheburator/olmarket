@@ -3,51 +3,75 @@
 
 {% block content %}
 
-<h2>Create Listing</h2>
+<div class="card mt-4 forms-card">
+    <div class="card-body">
+        <h2 class="card-title mb-4">Create Listing</h2>
 
-{% if messages %}
-<div>
-    {% for message in messages %}
-    <div {% if message.tags %} class="alert-{{ message.tags }}" {% endif %}>{{ message }}</div>
-    {% endfor %}
-</div>
-{% endif %}
-
-<form method="post" enctype="multipart/form-data" action="{% url 'listings:create_listing' %}">
-    {% csrf_token %}
-    <div class="form-group">
-        <label for="title">Title:</label>
-        <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="{{ listing_form.title.value }}">
-    </div>
-
-    <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea class="form-control" id="description" name="description" placeholder="Description">{{ listing_form.description.value }}</textarea>
-    </div>
-
-    <div class="form-group">
-        <label for="price">Price:</label>
-        <input type="number" class="form-control" id="price" name="price" placeholder="Price" value="{{ listing_form.price.value }}">
-    </div>
-
-    <div class="form-group">
-        <label for="category">Category:</label>
-        <select class="form-control" id="category" name="category">
-            {% for category in listing_form.category.field.queryset %}
-                <option value="{{ category.id }}" {% if category.id == listing_form.instance.category.id %} selected {% endif %}>{{ category.name }}</option>
+        {% if messages %}
+        <div>
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {% if message.tags %}<strong>{{ message.tags|title }}:</strong> {% endif %}{{ message }}
+            </div>
             {% endfor %}
-        </select>
-    </div>
+        </div>
+        {% endif %}
 
-    <div class="form-group">
-        <label for="image">Images:</label>
-        <input type="file" class="form-control-file" id="image" name="image" multiple>
-    </div>
+        <form method="post" enctype="multipart/form-data" action="{% url 'listings:create_listing' %}">
+            {% csrf_token %}
+            
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-heading" viewBox="0 0 16 16">
+                        <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
+                        <path d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                </span>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Title" aria-label="Title" aria-describedby="basic-addon1" required>
+            </div>
+            
 
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create Listing</button>
-        <button type="reset" class="btn btn-secondary">Reset</button>
+            <div class="input-group mb-3">
+                <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-text" viewBox="0 0 16 16">
+                        <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
+                        <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8m0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5"/>
+                    </svg>
+                </span>
+                <textarea class="form-control" id="description" name="description" placeholder="Description" rows="2" required></textarea>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-stack" viewBox="0 0 16 16">
+                        <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                        <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2z"/>
+                    </svg>
+                </span>
+                <input type="number" class="form-control" id="price" name="price" placeholder="Price" value="{{ listing_form.price.value }}" aria-label="Price" aria-describedby="basic-addon2" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="category" class="form-label">Category:</label>
+                <select class="form-select" id="category" name="category" required>
+                    {% for category in listing_form.category.field.queryset %}
+                        <option value="{{ category.id }}" {% if category.id == listing_form.instance.category.id %} selected {% endif %}>{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Images:</label>
+                <input type="file" class="form-control" id="image" name="image" multiple>
+            </div>
+                     
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <button type="submit" class="btn submit-btn">Create Listing</button>
+                <button type="reset" class="btn reset-btn">Reset</button>
+            </div>
+        </form>
     </div>
-</form>
+</div>
 
 {% endblock %}

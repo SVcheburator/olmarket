@@ -15,30 +15,30 @@
     <nav class="navbar row">
         {% if user.is_authenticated %}
         <div class="col-lg-6 col-md-4 col-2 d-flex justify-content-start">
-            <a class="nav-item main-btn" href="{% url 'main:main'%}">OLMarket</a>
+            <a class="nav-btn nav-main-btn" href="{% url 'main:main'%}">OLMarket</a>
         </div>
         <div class="col-lg-3 col-md-4 col-5 d-flex justify-content-end">
-            <a class="nav-item d-flex align-items-center" href="{% url 'users:view_profile' user.id %}">
-                <img class="base-avatar" src="{{ user.profile.avatar.url }}" alt="avatar of user"/>{{user}}
+            <a class="nav-btn empty-btn d-flex align-items-center" href="{% url 'users:view_profile' user.id %}">
+                <img class="nav-avatar" src="{{ user.profile.avatar.url }}" alt="avatar of user"/>{{user}}
             </a>
         </div>
         <div class="col-lg-3 col-md-4 col-5 d-flex justify-content-center">
-            <a class="nav-item" href="{% url 'listings:create_listing' %}" role="button">Add an advertisement</a>
+            <a class="nav-btn empty-btn" href="{% url 'listings:create_listing' %}" role="button">Add an advertisement</a>
         </div>
         {% else %}
         <div class="col-xl-10 col-lg-9 col-md-8 col-6 d-flex justify-content-start">
-            <a class="nav-item main-btn" href="{% url 'main:main'%}">OLMarket</a>
+            <a class="nav-btn nav-main-btn" href="{% url 'main:main'%}">OLMarket</a>
         </div>
         <div class="col-xl-1 col-lg-2 col-md-2 col-3 d-flex justify-content-end">
-            <a class="nav-item" href="{% url 'users:login'%}">Login</a>
+            <a class="nav-btn empty-btn" href="{% url 'users:login'%}">Login</a>
         </div>
         <div class="col-xl-1 col-lg-1 col-md-2 col-3 d-flex justify-content-end">
-            <a class="nav-item" href="{% url 'users:signup'%}">Signup</a>
+            <a class="nav-btn empty-btn" href="{% url 'users:signup'%}">Signup</a>
         </div>
         {% endif %}
     </nav>
     
-<div class="card mt-4 forms-card">
+<div class="card mt-4 content-card">
     {% block content %} {% endblock %}
 </div>
 

@@ -9,39 +9,7 @@ body {
     margin-bottom: 10px;
 }
 
-.nav-item {
-    height: 34px;
-    line-height: 34px;
-    text-decoration: none;
-    color: #c9c1c1;
-    display: inline-block;
-    padding-inline: 10px;
-    border: 1px solid;
-    border-radius: 10px;
-}
-.nav-item:hover {
-    color: #818187;
-    transition: 0.2s;
-}
-
-.active-nav-item {
-    background-color: #c9c1c1;
-    color: #4d4d4f;;
-}
-.active-nav-item:hover {
-    color: #4d4d4f;;
-}
-
-.main-btn {
-    color: #c9c1c1;
-    background-color: transparent;
-    border: none;
-}
-.main-btn:hover {
-    color: #c9c1c1;
-}
-
-.base-avatar {
+.nav-avatar {
     width: 35px;
     height: 100%;
     border-radius: 50%;
@@ -49,15 +17,11 @@ body {
     margin-right: 15px;
 }
 
-/* Content */
-.forms-card {
-    background-color: #4d4d4f;
-    color: #c9c1c1;
-    border: none;
-    padding: 10px;
+/* All forms */
+.form-card-body {
+    width: 50%;
 }
 
-/* All forms */
 .input-group-text {
     color: #c9c1c1;
     border: 1px solid;
@@ -65,27 +29,70 @@ body {
 }
 
 .form-control {
-    color: #c9c1c1;
-    border: 1px solid;
+    border: 1px solid #c9c1c1;
 }
 
-.submit-btn {
-    background-color: #c9c1c1;
-    color: #4d4d4f;
-}
-.submit-btn:hover {
-    color: #c9c1c1;
-    border: 1px solid;
-    transition: 0.2s;
-}
-
-.reset-btn {
+/* Normal buttons */
+.empty-btn {
     color: #c9c1c1;
     border: 1px solid;
 }
-.reset-btn:hover {
+.empty-btn:hover {
     color: #818187;
     border: 1px solid;
     transition: 0.2s;
 }
 
+.filled-btn {
+    background-color: #c9c1c1;
+    color: #4d4d4f;
+}
+.filled-btn:hover {
+    color: #c9c1c1;
+    border: 1px solid;
+    transition: 0.2s;
+}
+
+/* Navbar buttons */
+.nav-btn {
+    height: 34px;
+    line-height: 34px;
+    text-decoration: none;
+    display: inline-block;
+    padding-inline: 10px;
+    border-radius: 10px;
+}
+
+.active-nav-btn {
+    background-color: #c9c1c1;
+    color: #4d4d4f;;
+}
+.active-nav-btn:hover {
+    color: #4d4d4f;;
+}
+
+.nav-main-btn {
+    color: #c9c1c1;
+    background-color: transparent;
+    border: none;
+}
+.nav-main-btn:hover {
+    color: #c9c1c1;
+}
+
+/* Content */
+.content-card {
+    background-color: #4d4d4f;
+    color: #c9c1c1;
+    border: none;
+    padding: 10px;
+}
+
+.user-profile-link {
+    font-weight: bold;
+    color: #c9c1c1;
+}
+.user-profile-link:hover {
+    color: #818187;
+    transition: 0.2s;
+}

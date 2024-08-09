@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     links.forEach(link => {
         link.addEventListener('click', function() {
-            links.forEach(l => l.classList.remove('active-nav-item'));
+            links.forEach(l => l.classList.remove('active-nav-btn'));
 
-            this.classList.add('active-nav-item');
+            this.classList.add('active-nav-btn');
 
             localStorage.setItem('activeLink', this.href);
         });
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (activeLink) {
         links.forEach(link => {
             if (link.href === activeLink) {
-                link.classList.add('active-nav-item');
+                link.classList.add('active-nav-btn');
             }
         });
     }

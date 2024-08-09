@@ -4,7 +4,10 @@
 {% block content %}
 
 <div>
-    <h1><a class="user-profile-preview-link" href="{% url 'users:view_profile' user.id %}">{{user.username}}</a> - your profile settings</h1>
+    <h1>
+      <a class="user-profile-link" href="{% url 'users:view_profile' user.id %}">
+      {{user.username}}</a> - your profile settings
+    </h1>
     {% if profile_form.avatar.value %}
       <a href="{{ profile_form.avatar.value.url }}" target="_blank">
         <img src="{{ user.profile.avatar.url }}" width="250" height="250" alt="Current Avatar">
@@ -21,19 +24,28 @@
 {% endif %}
 
 <form method="POST" enctype="multipart/form-data" class="mb-3 custom-form">
-    {% csrf_token %}
-    <div class="mb-3">
-        <label class="small mb-1">Change Avatar:</label>
-        <input type="file" name="{{ profile_form.avatar.name }}" id="{{ profile_form.avatar.attrs.id }}" accept="image/*">
-        <div class="text-danger">{{ profile_form.errors.avatar }}</div>
-    </div>
+  {% csrf_token %}
+  <div class="mb-3">
+      <label for="{{ profile_form.avatar.attrs.id }}" class="form-label">Change your profile picture:</label>
+      <div class="input-group">
+        <span class="input-group-text">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+            <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z"/>
+          </svg>
+        </span>
+        <input type="file" class="form-control flex-grow-0" style="width: auto;" name="{{ profile_form.avatar.name }}" id="{{ profile_form.avatar.attrs.id }}" accept="image/*" aria-label="Change Avatar">
+      </div>
+  </div>
+  <div class="text-danger mb-3">{{ profile_form.errors.avatar }}</div>
 
-
-    <button type="submit" class="btn btn-primary">Save Changes</button>
-    <button type="reset" class="btn btn-secondary">Reset</button>
-
+  <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+      <button type="submit" class="btn filled-btn">Save Changes</button>
+      <button type="reset" class="btn empty-btn">Reset</button>
+  </div>
 </form>
 
-<a class="btn btn-danger logout-btn" href="{% url 'users:logout'%}">Logout</a>
-
+<div>
+  <a class="btn empty-btn" href="{% url 'users:logout'%}">Logout</a>
+</div>
 {% endblock %}

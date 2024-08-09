@@ -49,13 +49,15 @@ body {
     margin-right: 15px;
 }
 
-/* All forms */
+/* Content */
 .forms-card {
     background-color: #4d4d4f;
     color: #c9c1c1;
     border: none;
+    padding-top: 10px;
 }
 
+/* All forms */
 .input-group-text {
     color: #c9c1c1;
     border: 1px solid;

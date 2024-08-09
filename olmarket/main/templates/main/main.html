@@ -8,25 +8,21 @@
 
 
 <div class="container">
-    <div class="row">
-      {% for listing in listings %}
-        <div class="col-md-3 mb-4">
-          <div class="card h-100">
-            <div class="square-image">
-              <img src="{{ listing.main_image.url }}" class="card-img-top img-fluid" alt="{{ listing.title }}">
-            </div>
-            <div class="card-body text-center">
-              <h5 class="card-title">{{ listing.title }}</h5>
-              <p class="card-text">{{ listing.price }} грн</p>
-            </div>
+  <div class="row">
+    {% for listing in listings %}
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="card h-100">
+          <div class="square-image">
+            <img src="{{ listing.main_image.url }}" class="card-img-top img-fluid" alt="{{ listing.title }}">
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ listing.title }}</h5>
+            <p class="card-text">{{ listing.price }} грн</p>
           </div>
         </div>
-  
-        {% if forloop.counter|divisibleby:4 and not forloop.last %}
-          </div><div class="row">
-        {% endif %}
-      {% endfor %}
-    </div>
+      </div>
+    {% endfor %}
+  </div>
 </div>
 
 {% endblock %}

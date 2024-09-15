@@ -9,7 +9,8 @@
 
 <div class="container">
   <div class="row">
-    {% for listing in listings %}
+    <h2>All listings</h2>
+    {% for listing in all_listings %}
       <div class="col-6 col-md-4 col-lg-3 mb-4">
         <div class="card h-100">
           <div class="square-image">
@@ -22,6 +23,26 @@
         </div>
       </div>
     {% endfor %}
+
+    {% if category_listings %}
+        {% for category, listings in category_listings.items %}
+            <h2>{{ category.name }}</h2>
+            {% for listing in listings %}
+            <div class="col-6 col-md-4 col-lg-3 mb-4">
+              <div class="card h-100">
+                <div class="square-image">
+                  <img src="{{ listing.images.first.image.url }}" class="card-img-top img-fluid" alt="{{ listing.title }}">
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">{{ listing.title }}</h5>
+                  <p class="card-text">{{ listing.price }} грн</p>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+    
   </div>
 </div>
 

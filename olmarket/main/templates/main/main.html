@@ -26,7 +26,11 @@
 
     {% if category_listings %}
         {% for category, listings in category_listings.items %}
+        <div class="d-flex justify-content-between align-items-center mb-3">
             <h2>{{ category.name }}</h2>
+            <a href="#" class="btn empty-btn">More from {{ category.name }}</a>
+        </div>
+        <div class="row">
             {% for listing in listings %}
             <div class="col-6 col-md-4 col-lg-3 mb-4">
               <div class="card h-100">
@@ -40,6 +44,7 @@
               </div>
             </div>
             {% endfor %}
+        </div>
         {% endfor %}
     {% endif %}
     

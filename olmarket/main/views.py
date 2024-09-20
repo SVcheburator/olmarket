@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
-from listings.models import Listing, Category
+from listings.models import Listing
+from categories.models import Category
 
 # Create your views here.
 def main(request):

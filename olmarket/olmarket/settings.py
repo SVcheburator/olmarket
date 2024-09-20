@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'base',
     'main',
     'users',
+    'categories',
     'listings',
     'cloudinary',
     'django_cleanup'

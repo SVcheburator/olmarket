@@ -2,16 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
+from categories.models import Category
 
 # Create your models here.
-class Category(models.Model):
-    name = models.CharField(null=False)
-    icon = CloudinaryField('image', null=True, blank=True)
-
-    def _str_(self):
-        return f"{self.name}"
-    
-
 class Listing(models.Model):
     title = models.CharField(max_length=30)
     description = models.TextField(max_length=1500)

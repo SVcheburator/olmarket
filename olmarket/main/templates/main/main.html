@@ -9,28 +9,34 @@
 
 <div class="container">
   <div class="row">
-    <h2>All listings</h2>
-    {% for listing in all_listings %}
-      <div class="col-6 col-md-4 col-lg-3 mb-4">
-        <div class="card h-100">
-          <div class="square-image">
-            <img src="{{ listing.main_image.url }}" class="card-img-top img-fluid" alt="{{ listing.title }}">
-          </div>
-          <div class="card-body text-center">
-            <h5 class="card-title">{{ listing.title }}</h5>
-            <p class="card-text">{{ listing.price }} грн</p>
+    
+    {% if all_listings %}
+      <h2>All listings</h2>
+      {% for listing in all_listings %}
+        <div class="col-6 col-md-4 col-lg-3 mb-4">
+          <div class="card h-100">
+            <div class="square-image">
+              <img src="{{ listing.main_image.url }}" class="card-img-top img-fluid" alt="{{ listing.title }}">
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title">{{ listing.title }}</h5>
+              <p class="card-text">{{ listing.price }} грн</p>
+            </div>
           </div>
         </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    {% else %}
+      <h2>No listings yet</h2>
+    {% endif %}
 
     {% if category_listings %}
-        {% for category, listings in category_listings.items %}
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h2>{{ category.name }}</h2>
-            <a href="#" class="btn empty-btn">More from {{ category.name }}</a>
-        </div>
-        <div class="row">
+      {% for category, listings in category_listings.items %}
+        {% if listings %}
+          <div class="d-flex justify-content-between align-items-center mb-3">
+              <h2>{{ category.name }}</h2>
+              <a href="#" class="btn empty-btn">More from {{ category.name }}</a>
+          </div>
+          <div class="row">
             {% for listing in listings %}
             <div class="col-6 col-md-4 col-lg-3 mb-4">
               <div class="card h-100">
@@ -44,8 +50,9 @@
               </div>
             </div>
             {% endfor %}
-        </div>
-        {% endfor %}
+          </div>
+        {% endif %}
+      {% endfor %}
     {% endif %}
     
   </div>

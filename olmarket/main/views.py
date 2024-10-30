@@ -10,6 +10,7 @@ def main(request):
     
     for category in categories:
         listings_in_category = Listing.objects.filter(category=category)[:4]
+        category.listings_amount = Listing.objects.filter(category=category).count()
         category_listings[category] = listings_in_category
 
     return render(request, 'main/main.html', {'category_listings': category_listings})

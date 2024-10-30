@@ -10,7 +10,7 @@
         {% if listings %}
           <div class="d-flex justify-content-between align-items-center mb-3">
               <h2>{{ category.name }}</h2>
-              <a href="{% url 'categories:all_in_category' category.id %}" class="btn empty-btn">More from {{ category.name }}</a>
+              <a href="{% url 'categories:all_in_category' category.id %}" class="btn empty-btn">See more ({{category.listings_amount}})</a>
           </div>
           <div class="row">
             {% for listing in listings %}
